@@ -99,14 +99,14 @@ install nginx
 Configure Nginx:
 
 ```bash
-  sudo nano /etc/nginx/sites-available/vahidev.ir
+  sudo nano /etc/nginx/sites-available/vptokelicloud.site
 ```
 Edit the Configuration File:
 
 ```bash
   server {
     listen 80;
-    server_name vahidev.ir www.vahidev.ir;
+    server_name vptokelicloud.site www.vptokelicloud.site;
 
     location / {
         proxy_pass http://5.75.196.199:8081;
@@ -121,7 +121,7 @@ Edit the Configuration File:
 Enable the Site:
 
 ```bash
-sudo ln -s /etc/nginx/sites-available/vahidev.ir /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/vptokelicloud.site /etc/nginx/sites-enabled/
 
 
 ```
@@ -142,7 +142,7 @@ Set Up HTTPS (Optional but Recommended):
 
 ```bash
 sudo apt install certbot python3-certbot-nginx
-sudo certbot --nginx -d vahidev.ir -d www.vahidev.ir
+sudo certbot --nginx -d vptokelicloud.site -d www.vptokelicloud.site
 
 
 ```
@@ -151,16 +151,16 @@ Ensure Proper SSL Redirection (Optional): with .pem
 ```bash
 server {
     listen 80;
-    server_name vahidev.ir www.vahidev.ir;
+    server_name vptokelicloud.site www.vptokelicloud.site;
     return 301 https://$host$request_uri;
 }
 
 server {
     listen 443 ssl;
-    server_name vahidev.ir www.vahidev.ir;
+    server_name vptokelicloud.site www.vptokelicloud.site;
 
-    ssl_certificate /etc/letsencrypt/live/vahidev.ir/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/vahidev.ir/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/vptokelicloud.site/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/vptokelicloud.site/privkey.pem;
     include /etc/letsencrypt/options-ssl-nginx.conf;
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
@@ -177,16 +177,16 @@ or with cry and key:
 
 server {
     listen 80;
-    server_name vahidev.ir www.vahidev.ir;
+    server_name vptokelicloud.site www.vptokelicloud.site;
     return 301 https://$host$request_uri;
 }
 
 server {
     listen 443 ssl;
-    server_name vahidev.ir www.vahidev.ir;
+    server_name vptokelicloud.site www.vptokelicloud.site;
 
-    ssl_certificate /etc/letsencrypt/live/vahidev.ir/fullchain.crt;  # Change to .crt
-    ssl_certificate_key /etc/letsencrypt/live/vahidev.ir/privkey.key;  # Change to .key
+    ssl_certificate /etc/letsencrypt/live/vptokelicloud.site/fullchain.crt;  # Change to .crt
+    ssl_certificate_key /etc/letsencrypt/live/vptokelicloud.site/privkey.key;  # Change to .key
     include /etc/letsencrypt/options-ssl-nginx.conf;
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
