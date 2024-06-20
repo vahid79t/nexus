@@ -146,6 +146,13 @@ sudo certbot --nginx -d vptokelicloud.site -d www.vptokelicloud.site
 
 
 ```
+# Create certificate file
+cat kherad.pem | awk '/-----BEGIN CERTIFICATE-----/,/-----END CERTIFICATE-----/' > certificate.pem
+
+# Create private key file
+cat kherad.pem | awk '/-----BEGIN PRIVATE KEY-----/,/-----END PRIVATE KEY-----/' > private_key.pem
+
+
 Ensure Proper SSL Redirection (Optional): with .pem
 
 ```bash
