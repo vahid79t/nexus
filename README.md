@@ -207,6 +207,47 @@ server {
 }
 
 
+final and working now:
+
+server {
+    listen 80;
+    server_name nexus.kheradedu.ir www.nexus.kheradedu.ir;
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name your_domain.com;
+
+    ssl_certificate /etc/ssl/certificate.pem;
+    ssl_certificate_key /etc/ssl/private_key.pem;
+
+    # Optional: SSL configuration
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
+
+    # Other SSL settings like SSL session cache, timeouts, etc.
+    # ssl_session_cache shared:SSL:10m;
+    # ssl_session_timeout 10m;
+
+    # Location block to define your web application or site
+    location / {
+        proxy_pass http://192.168.139.216:8081;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # Additional Nginx configurations can be added as needed
+    # For example, error handling, logging, etc.
+}
+
+
 ```
 
 Reload Nginx Again:
