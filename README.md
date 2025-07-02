@@ -211,7 +211,7 @@ final and working now:
 
 server {
     listen 80;
-    server_name nexus.kheradedu.ir www.nexus.kheradedu.ir;
+    server_name vtakban.ir www.vtakban.ir;
 
     location / {
         return 301 https://$host$request_uri;
